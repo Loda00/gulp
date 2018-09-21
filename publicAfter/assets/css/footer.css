@@ -1,0 +1,89 @@
+footer {
+  position: fixed;
+  bottom: 0px;
+  background-color: #000;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  align-content: flex-end;
+}
+footer .footer-1 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+footer .footer-1 .colum1 {
+  display: block;
+}
+footer .footer-1 .colum1 .marca {
+  margin-top: 15px;
+  color: #ffa500;
+  margin-bottom: 15px;
+}
+footer .footer-1 .colum1 span {
+  display: block;
+  margin-bottom: 5px;
+}
+footer .footer-1 .colum1 span a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Boogaloo;
+  letter-spacing: 1px;
+}
+footer .footer-1 .colum2 {
+  display: block;
+}
+footer .footer-1 .colum2 .modelo {
+  margin-top: 15px;
+  color: #ffa500;
+  margin-bottom: 15px;
+}
+footer .footer-1 .colum2 span {
+  display: block;
+  margin-bottom: 5px;
+}
+footer .footer-1 .colum2 span a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Boogaloo;
+  letter-spacing: 1px;
+}
+footer .footer-2 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer .footer-2 .contentCard {
+  position: relative;
+  width: 350px;
+  height: 110px;
+  background-color: #6b6865;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer .footer-2 .contentCard .card {
+  background-color: #ec7a09;
+  width: 290px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  cursor: pointer;
+}
+footer .footer-2 .contentCard .card img {
+  width: 50px;
+  height: 80px;
+  transform: rotate(270deg);
+}
+footer .footer-2 .contentCard .card span {
+  font-size: 30px;
+  font-family: Bangers;
+}

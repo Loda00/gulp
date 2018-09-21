@@ -1,0 +1,20 @@
+.popupLogin {
+  background-image: url("http://www.4usky.com/data/out/67/164600151-orange-wallpapers.jpg");
+  width: 250px;
+  height: 350px;
+  background-size: 100%;
+  padding: 0px;
+}
+.popupLogin .title {
+  text-align: center;
+  font-family: Bangers;
+}
+.popupLogin .id {
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+.popupLogin .pass {
+  display: flex;
+  justify-content: space-around;
+}

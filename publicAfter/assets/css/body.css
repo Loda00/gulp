@@ -1,0 +1,22 @@
+h1 {
+  color: #f00;
+  width: 200px;
+}
+.button {
+  position: absolute;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #ec7a09;
+  right: 20px;
+}
+.button span {
+  transform: translateX(18px);
+  display: block;
+  line-height: 30px;
+}
+.button span .titleButton {
+  font-family: Boogaloo;
+  color: #000;
+  text-decoration: none;
+}
