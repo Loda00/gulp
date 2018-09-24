@@ -216,25 +216,36 @@ var game = function () {
 
 }();
 
+
+var abc = function () {
+    var numerador = 2;
+    var multiplicar = function (multiplicador) {
+        return numerador * multiplicador;
+    }
+    return {
+        multiplicar
+    }
+}();
+
 document.addEventListener('DOMContentLoaded', function (e) {
 
     function darEfecto(efecto) {
-        el = document.getElementsByClassName('cajainterna')[0];
+        el = document.getElementsByClassName('cajainterna');
         console.log(el)
-        el.classNAme
+        el[0].className += " " + efecto;
+        console.log(el)
     }
     function mostrar(e) {
-        document.getElementsByClassName('cajaexterna')[0].style.dislay = "block";
-        console.log(document.getElementsByClassName('cajaexterna')[0])
+        document.getElementsByClassName('cajaexterna')[0].style.display = "block";
         darEfecto("bounceIn");
     }
     function ocultar() {
         setTimeout(function () {
-            document.getElementsByClassName('cajaexterna').removeClass("bounceIn");
+            document.getElementsByClassName('cajaexterna')[0].style.display = "none";
         }, 5);
     }
-    document.querySelectorAll('a.mostrarmodal').addEventListener('click', mostrar)
-    document.querySelectorAll('a.cerrarmodal').addEventListener('click', ocultar)
+    // document.querySelector('a.mostrarmodal').addEventListener('click', mostrar)
+    // document.querySelector('a.cerrarmodal').addEventListener('click', ocultar)
 });
 
 
