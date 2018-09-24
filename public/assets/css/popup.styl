@@ -1,20 +1,75 @@
-.popupLogin
-    background-image: url('http://www.4usky.com/data/out/67/164600151-orange-wallpapers.jpg')
-    width: 250px
-    height: 350px
-    background-size: 100%;
-    padding: 0px
+body
+    font-family Arial
+    font-size 13px
 
-    .title
-        text-align: center
-        font-family: Bangers
-    .id
-        color: white
-        display: flex
-        justify-content: space-around
-    .pass
-        display: flex
-        justify-content: space-around
+.cajaexterna
+    background-color rgba(0, 0, 0, 0.5)
+    bottom 0
+    display none
+    left 0
+    overflow auto
+    position fixed
+    right 0
+    top 0
+    z-index 1000
 
+.cajainterna
+    background #fff
+    margin 0 auto
+    position relative
+    width 90%
 
-    
+.cajacentrada
+    margin 0 auto
+    text-align center
+    padding 1em
+    h2
+        background none repeat scroll 0 0 black
+        box-sizing border-box
+        color white
+        font-size 15px
+        left 0
+        margin 0
+        padding 5px
+        position absolute
+        text-align left
+        top 0
+        width 100%
+    p
+        margin-top 30px
+
+.cerrar
+    position absolute
+    right 16px
+    top 13px
+
+.animated
+    -webkit-animation-duration 1s
+    animation-duration 1s
+    -webkit-animation-fill-mode both
+    animation-fill-mode both
+    &.infinite
+        -webkit-animation-iteration-count infinite
+        animation-iteration-count infinite
+        
+.bounceIn
+    -webkit-animation-name bounceIn
+    animation-name bounceIn
+    -webkit-animation-duration .75s
+    animation-duration .75s
+
+.element
+    &.bounceIn
+        -webkit-animation bounceIn .7s 1
+        -moz-animation bounceIn .7s 1
+        -o-animation bounceIn .7s 1
+        animation bounceIn .7s 1
+
+.capa-padre
+    display table
+    height 100%
+    width 100%
+
+.capa-hijo
+    display table-cell
+    vertical-align middle
