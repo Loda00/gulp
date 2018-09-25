@@ -1,20 +1,32 @@
-html(lang="en")
-    include ../includ/header.pug
-    link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
-    body
-        .cajaexterna
-            .capa-padre
-                .capa-hijo
-                    .cajainterna.animated
-                        .cajacentrada
-                            h2 Test Modal
-                            p
-                                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                | consequat
-                            .cierramodal
-                                a.cerrarmodal(href='#') Cerrar Modal
-        .button
-            span
-                a#upPopup.mostrarmodal.titleButton(href='#') Mostrar modal
-        script(src="../publicAfter/assets/js/popup.js")
+link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
+
+.cajaexterna
+    .capa-padre
+        .capa-hijo
+            .cajainterna.animated
+                .cajacentrada
+                    h2 Test Modal
+                    label(for="") Nombre
+                        input#name(type="text")
+                    label(for="") Apellido
+                        input#lastname(type="text")
+                    button.submit(type="submit") Guardar
+                    .cierramodal
+                        a.close.cerrarmodal(href='#' ) Cerrar Modal
+                        
+.button
+    span
+        a#upPopup.mostrarmodal.titleButton(href='#') Mostrar modal
+
+//- .inicio
+//-     h2 Test Modal
+//-     p
+//-         | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+//-         | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+//-         | consequat
+//-     .cierramodal
+//-         a.close.cerrarmodal(href='#' ) Cerrar Modal
+script(src="../publicAfter/assets/js/popup.js")
+            
+
+        

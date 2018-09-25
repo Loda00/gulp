@@ -1,37 +1,23 @@
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Consultoría</title>
-    <link rel="stylesheet" href="../publicAfter/assets/css/main.css"/>
-    <link rel="stylesheet" href="../publicAfter/assets/css/nav.css"/>
-    <link rel="stylesheet" href="../publicAfter/assets/css/body.css"/>
-    <link rel="stylesheet" href="../publicAfter/assets/css/footer.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers|Boogaloo"/>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  </head>
-  <link rel="stylesheet" href="../publicAfter/assets/css/popup.css"/>
-  <body>
-    <div class="cajaexterna">
-      <div class="capa-padre">
-        <div class="capa-hijo">
-          <div class="cajainterna animated">
-            <div class="cajacentrada">
-              <h2>Test Modal</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat
-              </p>
-              <div class="cierramodal"><a class="cerrarmodal" href="#">Cerrar Modal</a></div>
-            </div>
-          </div>
+<link rel="stylesheet" href="../publicAfter/assets/css/popup.css"/>
+<div class="cajaexterna">
+  <div class="capa-padre">
+    <div class="capa-hijo">
+      <div class="cajainterna animated">
+        <div class="cajacentrada">
+          <h2>Test Modal</h2>
+          <label for="">Nombre
+            <input id="name" type="text"/>
+          </label>
+          <label for="">Apellido
+            <input id="lastname" type="text"/>
+          </label>
+          <button class="submit" type="submit">Guardar</button>
+          <div class="cierramodal"><a class="close cerrarmodal" href="#">Cerrar Modal</a></div>
         </div>
       </div>
     </div>
-    <div class="button"><span><a class="mostrarmodal titleButton" id="upPopup" href="#">Mostrar modal</a></span></div>
-    <script src="../publicAfter/assets/js/popup.js"></script>
-  </body>
-</html>
+  </div>
+</div>
+<div class="button"><span><a class="mostrarmodal titleButton" id="upPopup" href="#">Mostrar modal</a></span></div>
+<script src="../publicAfter/assets/js/popup.js"></script>
