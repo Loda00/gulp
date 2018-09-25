@@ -1,24 +1,20 @@
 html(lang="en")
     include ../includ/header.pug
-    link(rel="stylesheet", href="../assets/css/popup.css")
+    link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
     body
         .cajaexterna
-        .capa-padre
-            .capa-hijo
-            .cajainterna.animated
-                .cajacentrada
-                h2 Título del modal
-                p
-                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    | consequat
-                input(text='text')
-                label asdsadsa
-                .cierramodal
-                    a.cerrarmodal(href='#') cerrar
-        .contenido
-        p
-            | Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-            | eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-        a.mostrarmodal(href='#') Mostrar modal
-        script(src="../assets/js/popup.js")
+            .capa-padre
+                .capa-hijo
+                    .cajainterna.animated
+                        .cajacentrada
+                            h2 Test Modal
+                            p
+                                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                | consequat
+                            .cierramodal
+                                a.cerrarmodal(href='#') Cerrar Modal
+        .button
+            span
+                a#upPopup.mostrarmodal.titleButton(href='#') Mostrar modal
+        script(src="../publicAfter/assets/js/popup.js")

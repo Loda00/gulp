@@ -22,13 +22,15 @@ body {
 .cajacentrada {
   margin: 0 auto;
   text-align: center;
-  padding: 1em;
+  padding: 30px 20px;
 }
 .cajacentrada h2 {
   background: none repeat scroll 0 0 #000;
   box-sizing: border-box;
   color: #fff;
   font-size: 15px;
+  font-family: Bangers;
+  letter-spacing: 1px;
   left: 0;
   margin: 0;
   padding: 5px;

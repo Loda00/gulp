@@ -15,5 +15,10 @@
     "gulp-stylus": "^2.7.0",
     "gulp-watch": "^5.0.1",
     "run-sequence": "^2.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "gulp-babel": "^8.0.0"
   }
 }

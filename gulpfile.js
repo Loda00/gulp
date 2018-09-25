@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const stylus = require('gulp-stylus');
 const pug = require('gulp-pug');
+const babel = require('gulp-babel');
 const watch = require('gulp-watch');
 
 gulp.task('main', () => {
@@ -49,6 +50,14 @@ gulp.task('popup', () => {
         .pipe(gulp.dest('./publicAfter/partialsInicio'))
 })
 
+gulp.task('js', () => {
+    return gulp.src('./public/assets/js/*.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(gulp.dest('./publicAfter/assets/js'))
+})
+
 
 gulp.task('watch', () => {
     gulp.watch('./public/*.pug', ['main']);
@@ -57,4 +66,5 @@ gulp.task('watch', () => {
     gulp.watch('./public/contacto/*.pug', ['contacto']);
     gulp.watch('./public/servicios/*.pug', ['servicios']);
     gulp.watch('./public/popup/*.pug', ['popup']);
+    gulp.watch('./public/assets/js/*.js', ['js']);
 })
