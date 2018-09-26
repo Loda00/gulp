@@ -1,3 +1,81 @@
+"use strict";
+
+var Modal = function Modal() {
+  var st = {
+    showModal: '.show-modal',
+    closeModal: '.close-modal'
+  };
+  var DOM = {};
+
+  function catchDom() {
+    DOM.showModal = $(st.showModal);
+    DOM.closeModal = $(st.closeModal);
+  }
+
+  function handClick(arg) {
+    st.openModal = arg;
+  }
+
+  function handLoad(arg) {
+    st.fillModal = arg;
+  }
+
+  function handClose(arg) {
+    st.closeModal = arg;
+  }
+
+  function suscribeEvents() {
+    DOM.showModal.on('click', st.openModal);
+    DOM.closeModal.on('click', st.closeModal);
+  }
+
+  function suscribeEventsOnLoad() {
+    $(document).ready(st.fillModal);
+    suscribeEvents();
+  }
+
+  function init() {
+    catchDom();
+  }
+
+  return {
+    init: init,
+    open: handClick,
+    getForm: handLoad,
+    close: handClose,
+    exec: suscribeEvents,
+    load: suscribeEventsOnLoad
+  };
+};
+
+var modal = new Modal();
+modal.init();
+modal.open(function () {
+  $('.external-box').show();
+  modal.load();
+});
+modal.getForm(function () {
+  var form = $('.form-login').html();
+  $('.center-box').html(form);
+});
+modal.close(function () {
+  return $('.external-box').hide();
+});
+modal.exec(); // Modal
+// open
+// content
+// close
+// Button
+// click    
+// Login
+// submit
+// content
+// Button.click(() => {
+//     Modal.content = Login.content
+//     Modal.open(() => {
+//         Login.suscribeEvents();
+//     })
+// });
 // document.addEventListener('DOMContentLoaded', function (e) {
 //     function darEfecto(efecto) {
 //         var el = document.getElementsByClassName('cajainterna');
@@ -36,21 +114,6 @@
 // let person = new Person()
 // person.setn('xx')
 // person.getnombre();
-// Modal
-// open
-// content
-// close
-// Button
-// click
-// Login
-// submit
-// content
-// Button.click(() => {
-//     Modal.content = Login.content
-//     Modal.open(() => {
-//         Login.suscribeEvents();
-//     })
-// });
 // const c = console.log
 // let ShowModal = function () {
 //     let st = {
@@ -163,4 +226,3 @@
 //     console.log(`Su nombre es ${name} ${lastName}`)
 // })
 // sForm.suscribEvents()
-"use strict";

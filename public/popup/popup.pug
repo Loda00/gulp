@@ -1,10 +1,10 @@
 link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
 
-.cajaexterna
+.external-box
     .capa-padre
         .capa-hijo
-            .cajainterna.animated
-                .cajacentrada
+            .cajainterna
+                .center-box
                     //- h2 Test Modal
                     //- label(for="") Nombre
                     //-     input#name(type="text")
@@ -13,8 +13,9 @@ link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
                     //- button.submit(type="submit") Guardar
                     //- .cierramodal
                     //-     a.close.cerrarmodal(href='#' ) Cerrar Modal
+                    
                         
-.inicio
+.form-login
     h2 Test Modal
     label(for="") Nombre
         input#name(type="text")
@@ -22,7 +23,8 @@ link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
         input#lastname(type="text")
     button.submit(type="button") Guardar
     .cierramodal
-        a.close.cerrarmodal(href='#' ) Cerrar Modal
+        a.close.close-modal(href='#' ) Cerrar Modal
+
 script(src="https://code.jquery.com/jquery-1.12.4.min.js" ,crossorigin="anonymous")
 script(src="../publicAfter/assets/js/popup.js")
 

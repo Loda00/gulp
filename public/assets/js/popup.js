@@ -1,4 +1,65 @@
 
+var Modal = function () {
+    let st = {
+        showModal: '.show-modal',
+        closeModal: '.close-modal'
+    }
+    let DOM = {}
+
+    function catchDom() {
+        DOM.showModal = $(st.showModal);
+        DOM.closeModal = $(st.closeModal);
+    }
+
+    function handClick(arg) {
+        st.openModal = arg;
+    }
+
+    function handLoad(arg) {
+        st.fillModal = arg
+    }
+
+    function handClose(arg) {
+        st.closeModal = arg
+    }
+
+    function suscribeEvents() {
+        DOM.showModal.on('click', st.openModal)
+        DOM.closeModal.on('click', st.closeModal)
+    }
+
+    function suscribeEventsOnLoad() {
+        $(document).ready(st.fillModal)
+        suscribeEvents()
+    }
+
+    function init() {
+        catchDom()
+    }
+
+    return {
+        init,
+        open: handClick,
+        getForm: handLoad,
+        close: handClose,
+        exec: suscribeEvents,
+        load: suscribeEventsOnLoad
+    }
+}
+
+let modal = new Modal();
+modal.init();
+modal.open(() => {
+    $('.external-box').show();
+    modal.load()
+});
+modal.getForm(() => {
+    var form = $('.form-login').html();
+    $('.center-box').html(form);
+});
+modal.close(() => $('.external-box').hide())
+modal.exec();
+
 
 
 
@@ -8,12 +69,19 @@
     // content
     // close
 
-// Button
+    // Button
     // click    
 
-// Login
+    // Login
     // submit
     // content
+
+    // Button.click(() => {
+    //     Modal.content = Login.content
+    //     Modal.open(() => {
+    //         Login.suscribeEvents();
+    //     })
+    // });
 
 // document.addEventListener('DOMContentLoaded', function (e) {
 
@@ -66,12 +134,6 @@
 
 
 
-// Button.click(() => {
-//     Modal.content = Login.content
-//     Modal.open(() => {
-//         Login.suscribeEvents();
-//     })
-// });
 
 
 // const c = console.log
