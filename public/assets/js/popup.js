@@ -1,159 +1,220 @@
-document.addEventListener('DOMContentLoaded', function (e) {
-
-    function darEfecto(efecto) {
-        var el = document.getElementsByClassName('cajainterna');
-        console.log(el)
-        el[0].className += " " + efecto;
-        console.log(el)
-    }
-    function mostrar(e) {
-        document.getElementsByClassName('cajaexterna')[0].style.display = "block";
-        // var w = document.getElementsByClassName('inicio')[0].innerHTML;
-        // console.log(w)
-        // document.getElementsByClassName('cajacentrada')[0].innerHTML = w;
-        darEfecto("bounceIn");
-    }
-    function ocultar() {
-        setTimeout(function () {
-            document.getElementsByClassName('cajaexterna')[0].style.display = "none";
-            document.getElementById('name').value = ""
-            document.getElementById('lastname').value = ""
-        }, 300);
-    }
-    document.querySelector('a.mostrarmodal').addEventListener('click', mostrar)
-    document.querySelector('a.cerrarmodal').addEventListener('click', ocultar)
-});
-
-document.getElementsByClassName('submit')[0].addEventListener('click', function () {
-    let name = document.getElementById('name').value
-    let lastname = document.getElementById('lastname').value
 
 
-    console.log(`Te llamas ${name} ${lastname}`)
-})
 
-// document.addEventListener('DOMContentLoaded', function () {
 
-//     function mostrar() {
-//         document.getElementsByClassName('cajaexterna')[0].style.display = "block";
-//         document.getElementsByClassName('cajaexterna')[0].classList.add("bounceIn")
 
-//         // document.getElementsByClassName('cerrarmodal')[0].innerHTML = '<h1>Hi</h1>'
+// Modal
+    // open
+    // content
+    // close
+
+// Button
+    // click    
+
+// Login
+    // submit
+    // content
+
+// document.addEventListener('DOMContentLoaded', function (e) {
+
+//     function darEfecto(efecto) {
+//         var el = document.getElementsByClassName('cajainterna');
+//         console.log(el)
+//         el[0].className += " " + efecto;
+//         console.log(el)
 //     }
-
+//     function mostrar(e) {
+//         document.getElementsByClassName('cajaexterna')[0].style.display = "block";
+//         // var w = document.getElementsByClassName('inicio')[0].innerHTML;
+//         // console.log(w)
+//         // document.getElementsByClassName('cajacentrada')[0].innerHTML = w;
+//         darEfecto("bounceIn");
+//     }
 //     function ocultar() {
 //         setTimeout(function () {
-//             document.getElementsByClassName('cajacentrada')[0].style.display = "none";
-//         }, 200);
-//     }
-
-//     document.getElementsByClassName('mostrarmodal')[0].addEventListener('click', mostrar)
-//     document.getElementsByClassName('close')[0].addEventListener('click', ocultar)
-
-// });
-
-// document.getElementsByClassName('close')[0].addEventListener('click', () => {
-//     var x = document.getElementsByClassName('cerrarmodal')[0];
-//     console.log(x.outerHTML)
-// })
-
-// document.getElementById('upPopup').addEventListener('click', function () {
-//     var w = document.getElementsByClassName('inicio')[0].innerHTML;
-//     console.log(w)
-//     document.getElementsByClassName('cajacentrada')[0].innerHTML = w;
-// });
-
-
-/**** */
-// let modulos = function () {
-
-//     var popupShow = function () {
-//         document.getElementsByClassName('cajaexterna')[0].style.display = "block";
-//     }
-
-//     var closePopup = function () {
-//         setTimeout(function () {
 //             document.getElementsByClassName('cajaexterna')[0].style.display = "none";
-//         }, 100);
+//             document.getElementById('name').value = ""
+//             document.getElementById('lastname').value = ""
+//         }, 300);
+//     }
+//     document.querySelector('a.mostrarmodal').addEventListener('click', mostrar)
+//     document.querySelector('a.cerrarmodal').addEventListener('click', ocultar)
+// });
+
+
+// // https://codepen.io/anon/pen/gdJBrZ
+// // https://codepen.io/pedromarin/pen/jZOxxr
+
+
+
+// class Person {
+//     nombre;
+//     getNombre(){
+//        return this.nombre; 
+//     }
+//     setNombre(name){
+//         this.nombre = name;
 //     }
 
-//     var savePopup = function () {
+// }
+
+
+// let person = new Person()
+// person.setn('xx')
+// person.getnombre();
+
+
+
+
+// Button.click(() => {
+//     Modal.content = Login.content
+//     Modal.open(() => {
+//         Login.suscribeEvents();
+//     })
+// });
+
+
+// const c = console.log
+
+// let ShowModal = function () {
+//     let st = {
+//         cajaExterna: '.mostrarmodal'
+//     }
+//     let dom = {}
+
+//     function catchDOm() {
+//         dom.cE = $(st.cajaExterna)
 
 //     }
 
-//     var initialize = {
-//         show: function () {
-//             document.querySelector('a.mostrarmodal').addEventListener('click', popupShow)
-//             console.log('-----------------------')
-//         },
-//         fill: function () {
-//             document.querySelector('a.cerrarmodal').addEventListener('click', closePopup)
-//         }
+//     function handClick(arg) {
+//         st.fn = arg
+//     }
+
+//     function suscribEvents() {
+//         dom.cE.on('click', st.fn)
+//     }
+
+//     function start() {
+//         catchDOm()
 //     }
 
 //     return {
-//         obj: initialize
+//         start,
+//         handClick,
+//         suscribEvents
+//     }
+// }
+
+// let BindModal = function () {
+//     let st = {
+//         cerrarModal: '.cerrarmodal'
+//     }
+//     let dom = {}
+
+//     function catchDom() {
+//         dom.closeModal = $(st.cerrarModal)
 //     }
 
-// }();
+//     function handLoad(arg) {
+//         st.fn = arg
+//     }
 
-// modulos.obj;
+//     function handClose(arg) {
+//         st.fnClose = arg
+//     }
 
-// document.addEventListener('DOMContentLoaded', modulos.show());
-// document.addEventListener('DOMContentLoaded', modulos.fill());
-// console.log('sadsa')
+//     function suscribEventsDom() {
+//         $(document).ready(st.fn)
+//     }
 
-/*
-HTML
+//     function suscribEvents() {
+//         dom.closeModal.on('click', st.fnClose)
+//     }
 
-<input type='text' class='inputClass' value=''>
-<button class='btnSave' type='submit'>Guardar</button>
+//     function start() {
+//         catchDom()
+//     }
 
-*/
+//     return {
+//         start,
+//         handLoad,
+//         handClose,
+//         suscribEventsDom,
+//         suscribEvents
+//     }
+// }
+// // console.log(12)
+// let showM = new ShowModal()
+// let bindM = new BindModal()
+
+// bindM.start()
+// bindM.handLoad(() => {
+//     var paragraph = $('.inicio').html();
+//     console.log('paragraph', paragraph);
+//     console.log($(paragraph).find('.cerrarmodal'));
+//     $('.cajacentrada').html(paragraph);
+
+//     $(paragraph).find('.cerrarmodal').on('click', function () {
+//         alert('ss');
+//         $('.cajaexterna').hide()
+//     })
+//     //    bindM.suscribEvents()
+// })
+
+// bindM.handClose(() => {
+//     $('.cajaexterna').hide()
+// })
 
 
-// https://codepen.io/anon/pen/gdJBrZ
-// https://codepen.io/pedromarin/pen/jZOxxr
+// showM.start()
+// showM.handClick(() => {
+//     $('.cajaexterna').show()
+//     bindM.suscribEventsDom()
+// })
+// showM.suscribEvents()
 
-var test1 = function () {
-    let dom = {}
-    let st = {
-        inputText: '.inputClass',
-        btnSave: '.btnSave'
-    }
+// let saveForm = function () {
+//     let st = {
+//         submit: '.submit'
+//     }
+//     let dom = {}
 
-    var catchDom = function () {
-        dom.inputText = $(st.inputText)
-        dom.btnSave = $(st.btnSave)
-    }
+//     function catchDom() {
+//         dom.sF = $(st.submit)
+//         c($(st.submit))
+//     }
 
-    var suscribeEvents = function () {
-        dom.btnSave.on('click', events.saveData)
-    }
+//     function handEvent(arg) {
+//         st.fn = arg
+//     }
 
-    var events = {
-        saveData(e) {
-            let ele = e.target;
-            fn.Mostrar();
-        }
-    }
+//     function suscribEvents() {
+//         dom.sF.on('click', st.fn)
+//         c(st.fn)
+//     }
 
-    var fn = {
-        Mostrar() {
-            console.log();
-        }
-    }
+//     function start() {
+//         catchDom()
+//     }
 
-    var initialize = function () {
-        catchDom();
-        suscribeEvents();
-    }
+//     return {
+//         start,
+//         handEvent,
+//         suscribEvents
+//     }
+// }
 
-    return {
-        init: initialize
-    }
+// let sForm = new saveForm();
 
-}
+// sForm.start()
+// sForm.handEvent(() => {
+//     let name = $('#name').val()
+//     let lastName = $('#lastname').val()
+
+//     console.log(`Su nombre es ${name} ${lastName}`)
+// })
+// sForm.suscribEvents()
 
 
 
