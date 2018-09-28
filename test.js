@@ -1,3 +1,104 @@
+var modal = function () {
+    var st = {
+        parent: '',
+        showModal: '.show-modal',
+        closeModal: '.close-modal',
+        content: '.form-login'
+    }
+
+    var dom = {}
+
+    var catchDOM = function () {
+        dom.parent = $(st.parent);
+        dom.showModal = $(st.showModal);
+        dom.closeModal = $(st.closeModal, dom.parent);
+    }
+
+    var suscribeEvents = function () {
+        dom.showModal.on('click', events.openModal);
+        dom.closeModal.on('click', events.closeModal);
+    }
+
+    var events = {
+        openModal() {
+
+        },
+        closeModal() {
+
+        }
+    }
+
+    var fn = {}
+
+    var initialize = function () {
+        catchDOM();
+        suscribeEvents();
+    }
+
+    return {
+        init: initialize
+    }
+}
+
+modal.init();
+modal.events.openModal()
+
+
+modal({
+    parent: '.form',
+    showModal: '.btn-open',
+    closeModal: '.btn-close',
+    content: '.form-2'
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const c = console.log;
 // let obj = {
 //     nombre: "Jhon",

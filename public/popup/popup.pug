@@ -1,33 +1,29 @@
 link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
 
-.external-box
+.external-box.hide
     .capa-padre
         .capa-hijo
-            .cajainterna
+            .internal-box
+                .image
+                    img.close-modal(src="https://image.flaticon.com/icons/png/512/13/13725.png", alt="", srcset="")
                 .center-box
-                    //- h2 Test Modal
-                    //- label(for="") Nombre
-                    //-     input#name(type="text")
-                    //- label(for="") Apellido
-                    //-     input#lastname(type="text")
-                    //- button.submit(type="submit") Guardar
-                    //- .cierramodal
-                    //-     a.close.cerrarmodal(href='#' ) Cerrar Modal
-                    
-                        
-.form-login
+
+.form-login.hide
     h2 Test Modal
     label(for="") Nombre
-        input#name(type="text")
+        input.name(type="text")
     label(for="") Apellido
-        input#lastname(type="text")
+        input.lastname(type="text")
     button.submit(type="button") Guardar
-    .cierramodal
-        a.close.close-modal(href='#' ) Cerrar Modal
+
+.form-reg.hide
+    h2 Registro Modal
+    label(for="") Nombre
+        input.name(type="text")
+    label(for="") Apellido
+        input.lastname(type="text")
+    button.submit(type="button") Guardar
+
 
 script(src="https://code.jquery.com/jquery-1.12.4.min.js" ,crossorigin="anonymous")
 script(src="../publicAfter/assets/js/popup.js")
-
-           
-
-        

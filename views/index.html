@@ -36,25 +36,35 @@
       <div class="footer-v-2"></div>
     </footer>
     <link rel="stylesheet" href="../publicAfter/assets/css/popup.css"/>
-    <div class="external-box">
+    <div class="external-box hide">
       <div class="capa-padre">
         <div class="capa-hijo">
-          <div class="cajainterna">
+          <div class="internal-box">
+            <div class="image"><img class="close-modal" src="https://image.flaticon.com/icons/png/512/13/13725.png" alt="" srcset=""/></div>
             <div class="center-box"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="form-login">
+    <div class="form-login hide">
       <h2>Test Modal</h2>
       <label for="">Nombre
-        <input id="name" type="text"/>
+        <input class="name" type="text"/>
       </label>
       <label for="">Apellido
-        <input id="lastname" type="text"/>
+        <input class="lastname" type="text"/>
       </label>
       <button class="submit" type="button">Guardar</button>
-      <div class="cierramodal"><a class="close close-modal" href="#">Cerrar Modal</a></div>
+    </div>
+    <div class="form-reg hide">
+      <h2>Registro Modal</h2>
+      <label for="">Nombre
+        <input class="name" type="text"/>
+      </label>
+      <label for="">Apellido
+        <input class="lastname" type="text"/>
+      </label>
+      <button class="submit" type="button">Guardar</button>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
     <script src="../publicAfter/assets/js/popup.js"></script>

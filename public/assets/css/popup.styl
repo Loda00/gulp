@@ -2,71 +2,63 @@ body
     font-family Arial
     font-size 13px
 
+.hide
+    display none
+
 .external-box
     background-color rgba(0, 0, 0, .5)
-    bottom 0
-    display none
+    bottom 0    
     left 0
     overflow auto
     position fixed
     right 0
     top 0
-    z-index 1000
+    z-index 100
 
-.center-box
-    background #fff
-    margin 0 auto
+.internal-box
     position relative
-    width 40%
-    height 250px
-
-.center-box
+    width 25%
+    height auto
     margin 0 auto
-    // text-align center
-    padding 30px 20px
-    h2
-        background none repeat scroll 0 0 black
-        box-sizing border-box
-        color white
-        font-size 15px
-        font-family Bangers
-        letter-spacing: 1px
-        left 0
-        margin 0
-        padding 5px
+    box-shadow: 2px 2px 2px
+    z-index 999
+    .image
+        width 10px
+        margin-right: 0px
+        z-index 1000
         position absolute
-        text-align left
-        top 0
-        width 100%
-    label
-        display block
+        right 5px
+        top 5px
+        img
+            width 100%
+            cursor pointer
+    .center-box
+        background #fff
+        margin 0 auto
+        position relative
+        padding 30px 20px
+        border-radius: 4px
+        h2
+            //background none repeat scroll 0 0 black
+            box-sizing border-box
+            color #000
+            font-size 15px
+            font-family Bangers
+            letter-spacing: 1px
+            left 0
+            margin 0
+            padding 5px
+            position absolute
+            text-align left
+            top 0
+            width 100%
+        label
+            display block
 
-.cerrar
-    position absolute
-    right 16px
-    top 13px
-
-// .animated
-//     -webkit-animation-duration 1s
-//     animation-duration 1s
-//     -webkit-animation-fill-mode both
-//     animation-fill-mode both
-//     &.infinite
-//         -webkit-animation-iteration-count infinite
-//         animation-iteration-count infinite
-        
-// .bounceIn
-//     -webkit-animation-name bounceIn
-//     animation-name bounceIn
-//     -webkit-animation-duration .75s
-//     animation-duration .75s
-
-// .element
-//     &.bounceIn
-//         -webkit-animation bounceIn .7s 1
-//         -moz-animation bounceIn .7s 1
-//         -o-animation bounceIn .7s 1
-//         animation bounceIn .7s 1
+    .cerrar
+        position absolute
+        right 16px
+        top 13px
 
 .capa-padre
     display table
@@ -76,6 +68,3 @@ body
 .capa-hijo
     display table-cell
     vertical-align middle
-
-.form-login
-    display none

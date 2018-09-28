@@ -1,80 +1,315 @@
-
-var Modal = function () {
-    let st = {
-        showModal: '.show-modal',
-        closeModal: '.close-modal'
+var fn = function () {
+    let fns = {}
+    let add = (nameFn, Fn) => {
+        fns[nameFn] = Fn;
     }
-    let DOM = {}
+    let run = (nameFn, args) => {
+        fns[nameFn](args)
+    }
+    return {
+        add, run
+    }
+}
+
+let ps = new fn();
+
+let Modal = function () {
+    let st = {
+        parent: '.external-box',
+        btnShowModal: '.show-modal',
+        btnCloseModal: '.close-modal',
+        content: '.form-reg',
+        container: '.center-box '
+    }
+
+    let dom = {}
 
     function catchDom() {
-        DOM.showModal = $(st.showModal);
-        DOM.closeModal = $(st.closeModal);
-    }
-
-    function handClick(arg) {
-        st.openModal = arg;
-    }
-
-    function handLoad(arg) {
-        st.fillModal = arg
-    }
-
-    function handClose(arg) {
-        st.closeModal = arg
+        dom.parent = $(st.parent);
+        dom.btnShowModal = $(st.btnShowModal);
+        dom.btnCloseModal = $(st.btnCloseModal, dom.parent);
+        dom.content = $(st.content);
+        dom.container = $(st.container);
     }
 
     function suscribeEvents() {
-        DOM.showModal.on('click', st.openModal)
-        DOM.closeModal.on('click', st.closeModal)
+        dom.btnShowModal.on('click', events.showModal)
+        dom.btnCloseModal.on('click', events.removeModal)
+        $('.capa-hijo').on('click', events.removeModal)
     }
 
-    function suscribeEventsOnLoad() {
-        $(document).ready(st.fillModal)
-        suscribeEvents()
+    let events = {
+        showModal() {
+            fn.getForm();
+        },
+        removeModal(e) {
+            if (e.target !== this) return;
+            dom.parent.addClass('hide')
+        }
+    }
+
+    let fn = {
+        getForm() {
+            let paragraph = $(dom.content).html();
+            $(dom.container).html(paragraph);
+            dom.parent.removeClass('hide')
+            setTimeout(function () {
+                ps.run('modal:init')
+            }, 10)
+        }
     }
 
     function init() {
-        catchDom()
+        catchDom();
+        suscribeEvents();
+    }
+
+    return {
+        init
+    }
+}
+
+let Login = function () {
+    let st = {
+        btnSubmit: '.submit',
+        inputName: '.name',
+        inputLastName: '.lastname',
+        regUsers: []
+    }
+
+    let dom = {}
+
+    function catchDOm() {
+        dom.btnSubmit = $(st.btnSubmit);
+        dom.inputName = $(st.inputName);
+        dom.inputLastName = $(st.inputLastName);
+        console.log(dom.btnSubmit)
+    }
+
+    function suscribeEvents() {
+        dom.btnSubmit.on('click', events.getData)
+
+    }
+
+    let events = {
+        getData(e) {
+            let name = $(dom.inputName).val();
+            let lastName = $(dom.inputLastName).val();
+
+            st.regUsers.push({ name, lastName })
+
+            // sessionStorage.setItem('users', JSON.stringify(regUsers))
+        }
+    }
+
+    let fn = {}
+
+    function init() {
+        catchDOm();
+        suscribeEvents();
     }
 
     return {
         init,
-        open: handClick,
-        getForm: handLoad,
-        close: handClose,
-        exec: suscribeEvents,
-        load: suscribeEventsOnLoad
+        dom
     }
 }
 
 let modal = new Modal();
-modal.init();
-modal.open(() => {
-    $('.external-box').show();
-    modal.load()
-});
-modal.getForm(() => {
-    var form = $('.form-login').html();
-    $('.center-box').html(form);
-});
-modal.close(() => $('.external-box').hide())
-modal.exec();
+let login = new Login()
+modal.init()
+ps.add('modal:init', login.init)
 
 
 
 
 
-// Modal
-    // open
-    // content
-    // close
 
-    // Button
-    // click    
 
-    // Login
-    // submit
-    // content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use strict";
+
+// var Modal = function () {
+//     let st = {
+//         parent: '.external-box',
+//         btnShowModal: '.show-modal',
+//         btnCloseModal: '.close-modal',
+//         content: '.form-login'
+//     };
+
+//     let dom = {};
+
+//     function catchDom() {
+//         dom.parent = $(st.parent);
+//         dom.btnShowModal = $(st.btnShowModal);
+//         dom.btnCloseModal = $(st.btnCloseModal, dom.parent);
+//         dom.contentModal = $(st.content);
+//     }
+
+//     let suscribeEvents = function () {
+//         dom.btnShowModal.on('click', events.handOpen);
+//         dom.btnCloseModal.on('click', events.handClose);
+//     }
+
+//     let events = {
+//         handOpen() {
+//             dom.parent.show();
+//             fn.handLoad()
+//         },
+//         handClose() {
+//             dom.parent.hide();
+//         }
+//     }
+
+//     let fn = {
+//         handLoad() {
+//             let form = dom.contentModal.html();
+//             $('.center-box').html(form);
+//         }
+//     }
+
+//     let init = function (st) {
+//         //extends
+//         //object.azain
+//         catchDom();
+//         suscribeEvents();
+//     }
+
+//     return {
+//         init,
+//         fn
+//     }
+// }
+
+// let modal = new Modal()
+
+// modal.init()
+// console.log(modal.fn)
+
+
+
+// let Modal = function () {
+//     let st = {
+//         showModal: '.show-modal',
+//         closeModal: '.close-modal'
+//     }
+//     let DOM = {}
+
+//     function catchDom() {
+//         DOM.showModal = $(st.showModal);
+//         DOM.closeModal = $(st.closeModal);
+//     }
+
+//     function handClick(arg) {
+//         st.openModal = arg;
+//     }
+
+//     function handLoad(arg) {
+//         st.fillModal = arg
+//     }
+
+//     function handClose(arg) {
+//         st.closeModal = arg
+//     }
+
+//     function suscribeEvents() {
+//         DOM.showModal.on('click', st.openModal)
+//         DOM.closeModal.on('click', st.closeModal)
+//     }
+
+//     function suscribeEventsOnLoad() {
+//         $(document).ready(st.fillModal)
+//         suscribeEvents()
+//     }
+
+//     function init() {
+//         catchDom()
+//     }
+
+//     return {
+//         init,
+//         open: handClick,
+//         getForm: handLoad,
+//         close: handClose,
+//         exec: suscribeEvents,
+//         load: suscribeEventsOnLoad
+//     }
+// }
+
+// let modal = new Modal();
+// modal.init();
+// modal.open(() => {
+//     $('.external-box').show();
+//     modal.load()
+// });
+// modal.getForm(() => {
+//     var form = $('.form-login').html();
+//     $('.center-box').html(form);
+// });
+// modal.close(() => $('.external-box').hide())
+// modal.exec();
+
+
+
+
+
 
     // Button.click(() => {
     //     Modal.content = Login.content
@@ -88,7 +323,11 @@ modal.exec();
 //     function darEfecto(efecto) {
 //         var el = document.getElementsByClassName('cajainterna');
 //         console.log(el)
-//         el[0].className += " " + efecto;
+//         el[0].className += " " +         // open: handClick,
+        // getForm: handLoad,
+        // close: handClose,
+        // exec: suscribeEvents,
+        // load: suscribeEventsOnLoadefecto;
 //         console.log(el)
 //     }
 //     function mostrar(e) {
@@ -160,7 +399,11 @@ modal.exec();
 //     function start() {
 //         catchDOm()
 //     }
-
+        // open: handClick,
+        // getForm: handLoad,
+        // close: handClose,
+        // exec: suscribeEvents,
+        // load: suscribeEventsOnLoad
 //     return {
 //         start,
 //         handClick,
@@ -218,7 +461,11 @@ modal.exec();
 //     $('.cajacentrada').html(paragraph);
 
 //     $(paragraph).find('.cerrarmodal').on('click', function () {
-//         alert('ss');
+//         alert('ss');        // open: handClick,
+        // getForm: handLoad,
+        // close: handClose,
+        // exec: suscribeEvents,
+        // load: suscribeEventsOnLoad
 //         $('.cajaexterna').hide()
 //     })
 //     //    bindM.suscribEvents()

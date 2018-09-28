@@ -2,32 +2,49 @@ body {
   font-family: Arial;
   font-size: 13px;
 }
+.hide {
+  display: none;
+}
 .external-box {
   background-color: rgba(0,0,0,0.5);
   bottom: 0;
-  display: none;
   left: 0;
   overflow: auto;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
-.center-box {
+.internal-box {
+  position: relative;
+  width: 25%;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 2px 2px 2px;
+  z-index: 999;
+}
+.internal-box .image {
+  width: 10px;
+  margin-right: 0px;
+  z-index: 1000;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.internal-box .image img {
+  width: 100%;
+  cursor: pointer;
+}
+.internal-box .center-box {
   background: #fff;
   margin: 0 auto;
   position: relative;
-  width: 40%;
-  height: 250px;
-}
-.center-box {
-  margin: 0 auto;
   padding: 30px 20px;
+  border-radius: 4px;
 }
-.center-box h2 {
-  background: none repeat scroll 0 0 #000;
+.internal-box .center-box h2 {
   box-sizing: border-box;
-  color: #fff;
+  color: #000;
   font-size: 15px;
   font-family: Bangers;
   letter-spacing: 1px;
@@ -39,10 +56,10 @@ body {
   top: 0;
   width: 100%;
 }
-.center-box label {
+.internal-box .center-box label {
   display: block;
 }
-.cerrar {
+.internal-box .cerrar {
   position: absolute;
   right: 16px;
   top: 13px;
@@ -55,7 +72,4 @@ body {
 .capa-hijo {
   display: table-cell;
   vertical-align: middle;
-}
-.form-login {
-  display: none;
 }
