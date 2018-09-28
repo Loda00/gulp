@@ -12,7 +12,6 @@ var fn = function () {
 }
 
 let ps = new fn();
-
 let Modal = function () {
     let st = {
         parent: '.external-box',
@@ -43,7 +42,10 @@ let Modal = function () {
             fn.getForm();
         },
         removeModal(e) {
-            if (e.target !== this) return;
+            console.log(e)
+            // console.log(this)
+            if (e.target !== this)
+                return;
             dom.parent.addClass('hide')
         }
     }
@@ -83,7 +85,6 @@ let Login = function () {
         dom.btnSubmit = $(st.btnSubmit);
         dom.inputName = $(st.inputName);
         dom.inputLastName = $(st.inputLastName);
-        console.log(dom.btnSubmit)
     }
 
     function suscribeEvents() {
@@ -97,12 +98,16 @@ let Login = function () {
             let lastName = $(dom.inputLastName).val();
 
             st.regUsers.push({ name, lastName })
+            localStorage.setItem('users', JSON.stringify(st.regUsers))
 
-            // sessionStorage.setItem('users', JSON.stringify(regUsers))
+            ps.run('login:init')
+
         }
     }
 
-    let fn = {}
+    let fn = {
+
+    }
 
     function init() {
         catchDOm();
@@ -115,11 +120,81 @@ let Login = function () {
     }
 }
 
+let RegistredUsers = function () {
+    let st = {
+        efectLoading: '.loading',
+        formRegister: '.form-reg',
+        html: "",
+        listUsers: '.listUsers',
+        container: '.center-box',
+        content: '.userRegister'
+    }
+
+    let dom = {}
+
+    function catchDom() {
+        dom.efectLoading = $(st.efectLoading)
+        dom.formRegister = $(st.formRegister)
+        dom.listUsers = $(st.listUsers)
+        dom.container = $(st.container)
+
+    }
+
+    function suscribeEvents() {
+        $(document).ready(events.showLoading);
+        setTimeout(() => {
+            events.showListUsers();
+        }, 1500);
+    }
+
+    let events = {
+        showLoading() {
+            $()
+            $(dom.efectLoading).delay(1500).hide(1);
+
+        },
+        showListUsers() {
+            fn.getUsersRegister()
+            fn.showUsersRegister()
+        }
+    }
+
+    let fn = {
+        clearPopup() {
+            $(dom.formRegister).remove()
+        },
+        getUsersRegister() {
+            let users = localStorage.getItem('users')
+            console.log();
+            JSON.parse(users).forEach((value, index) => {
+                let data = `<li> ${value.name} ${value.lastName}</li>`
+                st.html += data;
+            })
+        },
+        showUsersRegister() {
+            console.log(st.html)
+            $(dom.listUsers).html(st.html)
+        },
+    }
+
+    function init() {
+        catchDom();
+        suscribeEvents()
+    }
+    return {
+        init
+    }
+}
+
 let modal = new Modal();
-let login = new Login()
+let login = new Login();
+let registredUsers = new RegistredUsers();
 modal.init()
 ps.add('modal:init', login.init)
+ps.add('login:init', registredUsers.init)
 
+
+$('.loading').delay(1000).hide(1);
 
 
 

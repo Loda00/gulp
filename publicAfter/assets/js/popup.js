@@ -48,6 +48,8 @@ var Modal = function Modal() {
       fn.getForm();
     },
     removeModal: function removeModal(e) {
+      console.log(e); // console.log(this)
+
       if (e.target !== this) return;
       dom.parent.addClass('hide');
     }
@@ -86,7 +88,6 @@ var Login = function Login() {
     dom.btnSubmit = $(st.btnSubmit);
     dom.inputName = $(st.inputName);
     dom.inputLastName = $(st.inputLastName);
-    console.log(dom.btnSubmit);
   }
 
   function suscribeEvents() {
@@ -100,7 +101,9 @@ var Login = function Login() {
       st.regUsers.push({
         name: name,
         lastName: lastName
-      }); // sessionStorage.setItem('users', JSON.stringify(regUsers))
+      });
+      localStorage.setItem('users', JSON.stringify(st.regUsers));
+      ps.run('login:init');
     }
   };
   var fn = {};
@@ -116,10 +119,76 @@ var Login = function Login() {
   };
 };
 
+var RegistredUsers = function RegistredUsers() {
+  var st = {
+    efectLoading: '.loading',
+    formRegister: '.form-reg',
+    html: "",
+    listUsers: '.listUsers',
+    container: '.center-box',
+    content: '.userRegister'
+  };
+  var dom = {};
+
+  function catchDom() {
+    dom.efectLoading = $(st.efectLoading);
+    dom.formRegister = $(st.formRegister);
+    dom.listUsers = $(st.listUsers);
+    dom.container = $(st.container);
+  }
+
+  function suscribeEvents() {
+    $(document).ready(events.showLoading);
+    setTimeout(function () {
+      events.showListUsers();
+    }, 1500);
+  }
+
+  var events = {
+    showLoading: function showLoading() {
+      $();
+      $(dom.efectLoading).delay(1500).hide(1);
+    },
+    showListUsers: function showListUsers() {
+      fn.getUsersRegister();
+      fn.showUsersRegister();
+    }
+  };
+  var fn = {
+    clearPopup: function clearPopup() {
+      $(dom.formRegister).remove();
+    },
+    getUsersRegister: function getUsersRegister() {
+      var users = localStorage.getItem('users');
+      console.log();
+      JSON.parse(users).forEach(function (value, index) {
+        var data = "<li> ".concat(value.name, " ").concat(value.lastName, "</li>");
+        st.html += data;
+      });
+    },
+    showUsersRegister: function showUsersRegister() {
+      console.log(st.html);
+      $(dom.listUsers).html(st.html);
+    }
+  };
+
+  function init() {
+    catchDom();
+    suscribeEvents();
+  }
+
+  return {
+    init: init
+  };
+};
+
 var modal = new Modal();
 var login = new Login();
+var registredUsers = new RegistredUsers();
 modal.init();
-ps.add('modal:init', login.init); // "use strict";
+ps.add('modal:init', login.init);
+ps.add('login:init', registredUsers.init);
+$('.loading').delay(1000).hide(1); // "use strict";
 // var Modal = function () {
 //     let st = {
 //         parent: '.external-box',
