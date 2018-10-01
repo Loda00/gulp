@@ -179,7 +179,8 @@ var Loading = function Loading() {
 var ShowUsersRegistred = function ShowUsersRegistred() {
   var st = {
     loading: '.loading',
-    content: '.userRegister',
+    content: '.user-Register',
+    listUsers: '.list-Users',
     html: "",
     container: '.center-box'
   };
@@ -189,14 +190,15 @@ var ShowUsersRegistred = function ShowUsersRegistred() {
     dom.loading = $(st.loading);
     dom.content = $(st.content);
     dom.container = $(st.container);
+    dom.listUsers = $(st.listUsers);
   }
 
   function suscribeEvents() {
     $(document).ready(events.closeLoading);
     setTimeout(function () {
-      events.showRegister();
       events.getUsersRegister();
       events.setUserRegister();
+      events.showRegister();
     }, 810);
   }
 
@@ -214,11 +216,11 @@ var ShowUsersRegistred = function ShowUsersRegistred() {
       });
     },
     showRegister: function showRegister() {
-      var html = $(dom.content).html().trim();
-      dom.container.html(html);
+      var paragraph = $(dom.content).html().trim();
+      dom.container.html(paragraph);
     },
     setUserRegister: function setUserRegister() {
-      dom.container.html(st.html);
+      dom.listUsers.html(st.html);
     }
   };
   var fn = {

@@ -173,10 +173,13 @@ let Loading = function () {
         init
     }
 }
+
+
 let ShowUsersRegistred = function () {
     let st = {
         loading: '.loading',
-        content: '.userRegister',
+        content: '.user-Register',
+        listUsers: '.list-Users',
         html: "",
         container: '.center-box'
     }
@@ -187,14 +190,15 @@ let ShowUsersRegistred = function () {
         dom.loading = $(st.loading)
         dom.content = $(st.content)
         dom.container = $(st.container)
+        dom.listUsers = $(st.listUsers)
     }
 
     function suscribeEvents() {
         $(document).ready(events.closeLoading)
         setTimeout(() => {
-            events.showRegister();
             events.getUsersRegister();
             events.setUserRegister();
+            events.showRegister();
         }, 810);
     }
 
@@ -212,11 +216,11 @@ let ShowUsersRegistred = function () {
             })
         },
         showRegister() {
-            let html = $(dom.content).html().trim();
-            dom.container.html(html);
+            let paragraph = $(dom.content).html().trim();
+            dom.container.html(paragraph);
         },
         setUserRegister() {
-            dom.container.html(st.html);
+            dom.listUsers.html(st.html);
         }
     }
 
