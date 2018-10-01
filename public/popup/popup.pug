@@ -2,7 +2,7 @@ link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
 
 .external-box.hide
     .capa-padre
-        .capa-hijo
+        .children-box
             .internal-box
                 .image
                     img.close-modal(src="https://image.flaticon.com/icons/png/512/13/13725.png", alt="", srcset="")
@@ -24,12 +24,15 @@ link(rel="stylesheet", href="../publicAfter/assets/css/popup.css")
         input.lastname(type="text")
     button.submit(type="button") Guardar
 
-.loading
-    .circle-parent
-        .circle-child
+.efectLoading.hide
+    .loading
+        .circle-parent
+            .circle-child
 
-.userRegister
+.userRegister.hide
     ul.listUsers
+
+    button.new-User New
         
 
 script(src="https://code.jquery.com/jquery-1.12.4.min.js" ,crossorigin="anonymous")

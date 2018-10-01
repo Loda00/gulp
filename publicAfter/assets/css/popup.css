@@ -69,7 +69,7 @@ body {
   height: 100%;
   width: 100%;
 }
-.capa-hijo {
+.children-box {
   display: table-cell;
   vertical-align: middle;
 }

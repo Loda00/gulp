@@ -24,6 +24,8 @@ h1 {
   width: 38px;
   height: 38px;
   background-color: #fff;
+  display: block;
+  margin: 0 auto;
 }
 .loading .circle-parent {
   position: relative;
