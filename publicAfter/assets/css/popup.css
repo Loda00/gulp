@@ -59,10 +59,8 @@ body {
 .internal-box .center-box label {
   display: block;
 }
-.internal-box .cerrar {
-  position: absolute;
-  right: 16px;
-  top: 13px;
+.internal-box .center-box input {
+  width: 70%;
 }
 .capa-padre {
   display: table;

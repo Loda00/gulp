@@ -52,11 +52,11 @@ let Modal = function () {
 
     let fn = {
         getForm() {
-            let paragraph = $(dom.content).html();
+            let paragraph = dom.content.html();
             dom.container.html(paragraph);
             dom.parent.removeClass('hide')
             setTimeout(function () {
-                ps.run('modal:init')
+                ps.run('login:init')
             }, 10)
         }
     }
@@ -103,7 +103,7 @@ let Login = function () {
             st.regUsers.push({ name, lastName });
             localStorage.setItem('users', JSON.stringify(st.regUsers));
             fn.showLoading();
-            ps.run('login:init');
+            ps.run('loading:init');
         }
     }
 
@@ -167,7 +167,7 @@ let Loading = function () {
 
     function init() {
         catchDom();
-        suscribeEvents()
+        suscribeEvents();
     }
     return {
         init
@@ -180,6 +180,7 @@ let ShowUsersRegistred = function () {
         loading: '.loading',
         content: '.user-Register',
         listUsers: '.list-Users',
+        // btnNewUser: '.new-User',
         html: "",
         container: '.center-box'
     }
@@ -187,11 +188,12 @@ let ShowUsersRegistred = function () {
     let dom = {}
 
     function catchDom() {
-        dom.loading = $(st.loading)
-        dom.content = $(st.content)
-        dom.container = $(st.container)
-        dom.listUsers = $(st.listUsers)
-    }
+        dom.loading = $(st.loading);
+        dom.content = $(st.content);
+        dom.container = $(st.container);
+        dom.listUsers = $(st.listUsers);
+        // dom.btnNewUser = $(st.btnNewUser);
+    };;
 
     function suscribeEvents() {
         $(document).ready(events.closeLoading)
@@ -199,16 +201,20 @@ let ShowUsersRegistred = function () {
             events.getUsersRegister();
             events.setUserRegister();
             events.showRegister();
+            /* INSTANCIA DE ULTIMA FUNCION */
+            ps.run('addUser:init');
         }, 810);
     }
 
     let events = {
         closeLoading() {
             dom.loading.delay(800).hide(1);
-            fn.cleanPopup();
+            setTimeout(() => {
+                fn.cleanPopup();
+            }, 800);
         },
         getUsersRegister() {
-            let users = localStorage.getItem('users')
+            let users = localStorage.getItem('users');;
             fn.cleanArray();
             JSON.parse(users).forEach((value, index) => {
                 let data = `<li>${value.name} ${value.lastName}</li>`
@@ -221,17 +227,65 @@ let ShowUsersRegistred = function () {
         },
         setUserRegister() {
             dom.listUsers.html(st.html);
+        },
+    }
+
+    let fn = {
+        cleanPopup() {
+            dom.container.empty();
+        },
+        cleanArray() {
+            st.html = '';
+        }
+    }
+
+    function init() {
+        catchDom();
+        suscribeEvents();
+    }
+
+    return {
+        init
+    }
+}
+
+let AddUser = function () {
+    let st = {
+        btnnewUser: '.new-User',
+        parent: 'dom.parent',
+        content: '.form-reg',
+        container: '.center-box',
+    }
+
+    let dom = {}
+
+    function catchDom() {
+        dom.btnnewUser = $(st.btnnewUser);
+        dom.content = $(st.content);
+        dom.parent = $(st.parent);
+        dom.container = $(st.container);
+    }
+
+    function suscribeEvents() {
+        console.log(dom.btnnewUser)
+        dom.btnnewUser.on('click', events.newUser);
+    }
+
+    let events = {
+        newUser() {
+            fn.cleanPopup();
+            let paragraph = $(dom.content).html();
+            dom.container.html(paragraph);
+            dom.parent.removeClass('hide');
+            setTimeout(function () {
+                ps.run('login:init');
+            }, 10)
         }
     }
 
     let fn = {
         cleanPopup() {
-            setTimeout(() => {
-                dom.container.empty();
-            }, 800);
-        },
-        cleanArray() {
-            st.html = '';
+            dom.container.empty();
         }
     }
 
@@ -249,9 +303,11 @@ let modal = new Modal();
 let login = new Login();
 let loading = new Loading();
 let showUsersRegistred = new ShowUsersRegistred();
+let addUser = new AddUser();
 modal.init()
-ps.add('modal:init', login.init)
-ps.add('login:init', loading.init)
-ps.add('showUsers:init', showUsersRegistred.init)
+ps.add('login:init', login.init);
+ps.add('loading:init', loading.init);
+ps.add('showUsers:init', showUsersRegistred.init);
+ps.add('addUser:init', addUser.init);
 
 

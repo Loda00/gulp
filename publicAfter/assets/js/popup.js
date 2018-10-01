@@ -56,11 +56,11 @@ var Modal = function Modal() {
   };
   var fn = {
     getForm: function getForm() {
-      var paragraph = $(dom.content).html();
+      var paragraph = dom.content.html();
       dom.container.html(paragraph);
       dom.parent.removeClass('hide');
       setTimeout(function () {
-        ps.run('modal:init');
+        ps.run('login:init');
       }, 10);
     }
   };
@@ -108,7 +108,7 @@ var Login = function Login() {
       });
       localStorage.setItem('users', JSON.stringify(st.regUsers));
       fn.showLoading();
-      ps.run('login:init');
+      ps.run('loading:init');
     }
   };
   var fn = {
@@ -181,6 +181,7 @@ var ShowUsersRegistred = function ShowUsersRegistred() {
     loading: '.loading',
     content: '.user-Register',
     listUsers: '.list-Users',
+    // btnNewUser: '.new-User',
     html: "",
     container: '.center-box'
   };
@@ -190,8 +191,11 @@ var ShowUsersRegistred = function ShowUsersRegistred() {
     dom.loading = $(st.loading);
     dom.content = $(st.content);
     dom.container = $(st.container);
-    dom.listUsers = $(st.listUsers);
+    dom.listUsers = $(st.listUsers); // dom.btnNewUser = $(st.btnNewUser);
   }
+
+  ;
+  ;
 
   function suscribeEvents() {
     $(document).ready(events.closeLoading);
@@ -199,16 +203,22 @@ var ShowUsersRegistred = function ShowUsersRegistred() {
       events.getUsersRegister();
       events.setUserRegister();
       events.showRegister();
+      /* INSTANCIA DE ULTIMA FUNCION */
+
+      ps.run('addUser:init');
     }, 810);
   }
 
   var events = {
     closeLoading: function closeLoading() {
       dom.loading.delay(800).hide(1);
-      fn.cleanPopup();
+      setTimeout(function () {
+        fn.cleanPopup();
+      }, 800);
     },
     getUsersRegister: function getUsersRegister() {
       var users = localStorage.getItem('users');
+      ;
       fn.cleanArray();
       JSON.parse(users).forEach(function (value, index) {
         var data = "<li>".concat(value.name, " ").concat(value.lastName, "</li>");
@@ -225,12 +235,58 @@ var ShowUsersRegistred = function ShowUsersRegistred() {
   };
   var fn = {
     cleanPopup: function cleanPopup() {
-      setTimeout(function () {
-        dom.container.empty();
-      }, 800);
+      dom.container.empty();
     },
     cleanArray: function cleanArray() {
       st.html = '';
+    }
+  };
+
+  function init() {
+    catchDom();
+    suscribeEvents();
+  }
+
+  return {
+    init: init
+  };
+};
+
+var AddUser = function AddUser() {
+  var st = {
+    btnnewUser: '.new-User',
+    parent: 'dom.parent',
+    content: '.form-reg',
+    container: '.center-box'
+  };
+  var dom = {};
+
+  function catchDom() {
+    dom.btnnewUser = $(st.btnnewUser);
+    dom.content = $(st.content);
+    dom.parent = $(st.parent);
+    dom.container = $(st.container);
+  }
+
+  function suscribeEvents() {
+    console.log(dom.btnnewUser);
+    dom.btnnewUser.on('click', events.newUser);
+  }
+
+  var events = {
+    newUser: function newUser() {
+      fn.cleanPopup();
+      var paragraph = $(dom.content).html();
+      dom.container.html(paragraph);
+      dom.parent.removeClass('hide');
+      setTimeout(function () {
+        ps.run('login:init');
+      }, 10);
+    }
+  };
+  var fn = {
+    cleanPopup: function cleanPopup() {
+      dom.container.empty();
     }
   };
 
@@ -248,7 +304,9 @@ var modal = new Modal();
 var login = new Login();
 var loading = new Loading();
 var showUsersRegistred = new ShowUsersRegistred();
+var addUser = new AddUser();
 modal.init();
-ps.add('modal:init', login.init);
-ps.add('login:init', loading.init);
+ps.add('login:init', login.init);
+ps.add('loading:init', loading.init);
 ps.add('showUsers:init', showUsersRegistred.init);
+ps.add('addUser:init', addUser.init);
