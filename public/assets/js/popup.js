@@ -293,7 +293,7 @@ let AddUser = function () {
         catchDom();
         suscribeEvents();
     }
-
+ 
     return {
         init
     }
