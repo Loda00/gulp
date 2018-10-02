@@ -309,5 +309,6 @@ ps.add('login:init', login.init);
 ps.add('loading:init', loading.init);
 ps.add('showUsers:init', showUsersRegistred.init);
 ps.add('addUser:init', addUser.init);
+console.log('1221')
 
 
